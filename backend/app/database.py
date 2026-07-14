@@ -4,7 +4,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+psycopg://expense_user:expense_pass@localhost:5432/expensedb")
+DATABASE_URL = os.getenv("DATABASE_URL", "YOUR_DB_URL_HERE")
 # NOTE: the fallback above is a local-dev convenience only — real credentials
 # are injected at runtime via the DATABASE_URL environment variable (see .env).
 
