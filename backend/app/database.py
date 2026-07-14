@@ -5,6 +5,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+psycopg://expense_user:expense_pass@localhost:5432/expensedb")
+# NOTE: the fallback above is a local-dev convenience only — real credentials
+# are injected at runtime via the DATABASE_URL environment variable (see .env).
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
