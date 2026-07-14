@@ -23,7 +23,7 @@ export default function AnomalyList({ anomalies }) {
           return (
             <li key={a.id} style={{ borderLeftColor: color }}>
               <div className="anomaly-head">
-                <span className="badge" style={{ borderColor: color, color }}>
+                <span className="badge" style={{ borderColor: color, color }}> 
                   {a.severity}
                 </span>
                 <span className="muted">{a.expense?.category || "—"}</span>

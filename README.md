@@ -4,20 +4,20 @@ A containerized full-stack app where a user logs expenses, sees spending trends 
 
 ## Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React (Vite) + Recharts |
-| Backend | FastAPI |
-| Anomaly Detection | Python (rule-based) |
-| Database | PostgreSQL 16 |
-| Containerization | Docker + Docker Compose |
+| Layer             | Technology              |
+| ----------------- | ----------------------- |
+| Frontend          | React (Vite) + Recharts |
+| Backend           | FastAPI                 |
+| Anomaly Detection | Python (Rule-based)     |
+| Database          | PostgreSQL 16           |
+| Containerization  | Docker + Docker Compose |
 
 ## Architecture
 
 ```
 ┌─────────────┐      POST /api/expenses      ┌──────────────────┐
-│   React     │ ───────────────────────────▶ │  FastAPI (CRUD)   │
-│  Dashboard  │                              │  writes to DB     │
+│   React     │ ───────────────────────────▶│  FastAPI (CRUD)  │
+│  Dashboard  │                              │  writes to DB    │
 │             │◀── GET /api/expenses ───────│                  │
 │             │◀── GET /api/anomalies ──────│                  │
 └─────────────┘                              └────────┬─────────┘
@@ -25,10 +25,10 @@ A containerized full-stack app where a user logs expenses, sees spending trends 
                                              BackgroundTasks (fire-and-forget)
                                                       ▼
                                              ┌──────────────────────┐
-                                             │  Anomaly Detector     │
-                                             │  (rule-based)         │
-                                             │  writes to anomalies  │
-                                             │  table                │
+                                             │  Anomaly Detector    │
+                                             │  (rule-based)        │
+                                             │  writes to anomalies │
+                                             │  table               │
                                              └──────────────────────┘
 ```
 
@@ -46,7 +46,7 @@ Each rule is a pure function, unit-tested with no DB mocking required.
 
 ## Real-Time Delivery
 
-Polling (not WebSockets) for v1 — a deliberate trade-off. Frontend re-fetches every 8s plus an immediate re-fetch after each successful POST. Stateles, simple to debug, adequate for a single-user demo.
+Polling (not WebSockets) for v1 — a deliberate trade-off. Frontend re-fetches every 8s plus an immediate re-fetch after each successful POST. Stateles, simple to debug.
 
 ## Project Structure
 
@@ -82,10 +82,10 @@ Polling (not WebSockets) for v1 — a deliberate trade-off. Frontend re-fetches 
 docker compose up --build       # add sudo if not in docker group
 ```
 
-| URL | What |
-|---|---|
-| http://localhost:5173 | React dashboard |
-| http://localhost:8000/docs | Swagger UI |
+| URL                        | What            |
+| -------------------------- | --------------- |
+| http://localhost:5173      | React dashboard |
+| http://localhost:8000/docs | Swagger UI      |
 
 ## Testing
 
